@@ -319,9 +319,15 @@ footer{padding:40px 0 100px;border-top:1px solid var(--line);color:var(--mut);fo
   var N='5511949111172';
   function wa(t){return 'https://wa.me/'+N+'?text='+encodeURIComponent(t)}
   document.querySelectorAll('[data-wa]').forEach(function(a){a.href=wa(a.getAttribute('data-wa'));a.target='_blank';a.rel='noopener'});
+  function track(){if(typeof gtag==='function')gtag('event','conversion',{send_to:'AW-17434137657/AJZrCOmSmLAdELmon_lA'})}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a');
+    if(a&&/^(https:\/\/wa\.me\/|tel:)/.test(a.href))track();
+  });
   var f=document.getElementById('f');
   f.addEventListener('submit',function(e){
     e.preventDefault();
+    track();
     var v=function(i){return document.getElementById(i).value.trim()};
     var m='Olá! Gostaria de solicitar um orçamento.\n\nServiço: '+v('s')+'\nLocal: '+v('l');
     if(v('b'))m+='\nBairro/cidade: '+v('b');
